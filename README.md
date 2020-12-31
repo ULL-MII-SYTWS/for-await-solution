@@ -6,7 +6,7 @@
 import { fefo } from 'fefo';
 
 for await (let result of fefo(arrayOfPromises)) {
-   ...
+   ... // First promise to fulfill is processed first 
 }
 ```
 
