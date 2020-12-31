@@ -3,9 +3,9 @@
 ## Usage
 
 ```js
-import { fefo } from 'fefo';
+import { fffs } from 'fffs';
 
-for await (let result of fefo(arrayOfPromises)) {
+for await (let result of fffs(arrayOfPromises)) {
    ... // First promise to fulfill is processed first 
 }
 ```
@@ -50,7 +50,7 @@ z
 But sometimes you want to process the results as soon as the promises yield them. To achieve it, import the current module and use it as in this example:
 
 ```javascript
-import { fefo } from '../index.js';
+import { fffs } from '../index.js';
 
 process.on('rejectionHandled', () => { });
 process.on('unhandledRejection', error => {
@@ -68,10 +68,10 @@ const arr = [
     Promise.resolve('z'),
 ];
 
-console.log(fefo);
+console.log(fffs);
 
 (async () => {
-    for await (let item of fefo(arr)) {
+    for await (let item of fffs(arr)) {
         console.log("item = ",item);
     }
 })()
@@ -80,8 +80,8 @@ console.log(fefo);
 Output:
 
 ```
-➜  test-racing-for-await-of git:(master) ✗ node test/hello-fefo.js
-[AsyncGeneratorFunction: fefo]
+➜  test-racing-for-await-of git:(master) ✗ node test/hello-fffs.js
+[AsyncGeneratorFunction: fffs]
 item =  { result: 'x', index: 1 }
 item =  { result: 'y', index: 3 }
 item =  { result: 'z', index: 5 }

@@ -14,7 +14,7 @@ async function* auxIterator(promises) {
     yield * auxIterator(promises)
 }
 
-async function * fefo(promises) {
+async function * fffs(promises) {
   let wrappedPromises = promises.map((p, i) => {
     return new Promise((resolve, reject) => {
       Promise.resolve(p).then(r => resolve({result: r, index: i}))
@@ -24,5 +24,5 @@ async function * fefo(promises) {
 
   yield * await auxIterator(wrappedPromises);
 }
-export { fefo }
+export { fffs }
 

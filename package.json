@@ -1,12 +1,12 @@
 {
-  "name": "fefo",
+  "name": "fffs",
   "version": "1.0.0",
-  "description": "Asynchronous iterate an array of promises: First to end is the first to output",
+  "description": "Asynchronous iterate an array of promises: First fulfilled is first processed",
   "author": "Casiano Rodriguez-Leon @crguezl",
   "license": "MIT",
   "scripts": {
-    "test": "node test/hello-fefo.js",
-    "start": "node test/reject-fefo.js" 
+    "test": "node test/hello-fffs.js",
+    "start": "node test/reject-fffs.js" 
   },
   "homepage": "",
   "repository": {

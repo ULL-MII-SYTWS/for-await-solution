@@ -1,5 +1,5 @@
 
-import { fefo } from '../index.js';
+import { fffs } from '../index.js';
 
 // See https://stackoverflow.com/questions/40920179/should-i-refrain-from-handling-promise-rejection-asynchronously
 process.on('rejectionHandled', () => { });
@@ -22,11 +22,11 @@ const arr = [
     'z',
 ];
 
-console.log(fefo);
+console.log(fffs);
 
 (async () => {
     try {
-        for await (let item of fefo(arr)) {
+        for await (let item of fffs(arr)) {
             console.log("item = ",item);
         }
     } catch(e) {
