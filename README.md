@@ -1,4 +1,4 @@
-# First to End is First to Output
+# First to be Fulfilled is First to be Served
 
 ## Usage
 
