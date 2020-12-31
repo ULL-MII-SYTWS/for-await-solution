@@ -1,5 +1,7 @@
 # First to be Fulfilled is First to be Served
 
+Returns an async generator that receives an array of promises (not an iterator) and yields the values in the order they are fulfilled
+
 ## Usage
 
 ```js
@@ -11,8 +13,6 @@ for await (let result of fffs(arrayOfPromises)) {
 ```
 
 ## Introduction
-
-Yield value from any resolved promise in array in for-await-of loop as soon as it resolved.
 
 If you use for-await-of array of promises, you iterate over it by initial order, doesn't matter if the next promise in given array is resolved before the previous one:
 
@@ -89,3 +89,54 @@ item =  { result: 'b', index: 2 }
 item =  { result: 'a', index: 0 }
 item =  { result: 'c', index: 4 }
 ```
+
+## Error Management Example
+
+Here is an example of use with rejection:
+
+```js
+
+import { fffs } from '../index.js';
+
+// See https://stackoverflow.com/questions/40920179/should-i-refrain-from-handling-promise-rejection-asynchronously
+process.on('rejectionHandled', () => { });
+process.on('unhandledRejection', error => {
+    console.log('unhandledRejection');
+});
+
+const sleep = time => 
+   new Promise(resolve => setTimeout(resolve, time));
+
+const arr = [
+    sleep(2000).then(() => 'a'),
+    'x',
+    sleep(1000).then(() => 'b'),
+    'y',
+    sleep(3000).then(() => { throw `Ohhh:\n` }),
+    'z',
+];
+
+(async () => {
+    try {
+        for await (let item of fffs(arr)) {
+            console.log("item = ",item);
+        }
+    } catch(e) {
+       console.log('Catched!:\n', e);
+    }
+
+})()
+```
+
+Gives as output:
+
+```
+➜  test-racing-for-await-of git:(main) node test/reject-fffs.js 
+item =  { result: 'x', index: 1 }
+item =  { result: 'y', index: 3 }
+item =  { result: 'z', index: 5 }
+item =  { result: 'b', index: 2 }
+item =  { result: 'a', index: 0 }
+Catched!:
+ { error: 'Ohhh:\n', index: 4 }
+ ```
