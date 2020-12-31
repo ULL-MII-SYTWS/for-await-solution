@@ -1,0 +1,27 @@
+{
+  "name": "fefo",
+  "version": "1.0.0",
+  "description": "Asynchronous iterate an array of promises: First to end is the first to output",
+  "author": "Casiano Rodriguez-Leon @crguezl",
+  "license": "MIT",
+  "scripts": {
+    "test": "node test/hello-fefo.js"
+  },
+  "homepage": "",
+  "repository": {
+    "type": "git",
+    "url": ""
+  },
+  "bugs": {
+    "url": ""
+  },
+  "main": "index.js",
+  "type": "module",
+  "keywords": [
+    "await",
+    "async",
+    "iterator",
+    "for-await-of",
+    "promise"
+  ]
+}
