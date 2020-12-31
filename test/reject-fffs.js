@@ -10,9 +10,6 @@ process.on('unhandledRejection', error => {
 const sleep = time => 
    new Promise(resolve => setTimeout(resolve, time));
 
-const sleepReject = time => 
-   new Promise((_, reject) => setTimeout(reject, time));
-
 const arr = [
     sleep(2000).then(() => 'a'),
     'x',
@@ -21,8 +18,6 @@ const arr = [
     sleep(3000).then(() => { throw `Ohhh:\n` }),
     'z',
 ];
-
-console.log(fffs);
 
 (async () => {
     try {

@@ -17,8 +17,8 @@ async function* auxIterator(promises) {
 async function * fffs(promises) {
   let wrappedPromises = promises.map((p, i) => {
     return new Promise((resolve, reject) => {
-      Promise.resolve(p).then(r => resolve({result: r, index: i}))
-      .catch(e => reject({error: e, index: i}))
+      Promise.resolve(p).then(r => resolve({value: r, index: i, status: 'fulfilled'}))
+      .catch(e => resolve({reason: e, index: i, status: 'rejected'}))
     })
   });
 

@@ -14,7 +14,7 @@ for await (let result of fffs(arrayOfPromises)) {
 
 ## Introduction
 
-If you use for-await-of array of promises, you iterate over it by initial order, doesn't matter if the next promise in given array is resolved before the previous one:
+If you use for-await-of on an array of promises, you iterate over it in the specified order, doesn't matter if the next promise in the given array is resolved before the previous one:
 
 ```javascript
 const sleep = time => new Promise(resolve => setTimeout(resolve, time));
