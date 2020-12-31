@@ -5,7 +5,8 @@
   "author": "Casiano Rodriguez-Leon @crguezl",
   "license": "MIT",
   "scripts": {
-    "test": "node test/hello-fefo.js"
+    "test": "node test/hello-fefo.js",
+    "start": "node test/reject-fefo.js" 
   },
   "homepage": "",
   "repository": {

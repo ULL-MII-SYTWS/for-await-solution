@@ -14,7 +14,6 @@ async function* auxIterator(promises) {
     yield * auxIterator(promises)
 }
 
-
 async function * fefo(promises) {
   let wrappedPromises = promises.map((p, i) => {
     return new Promise((resolve, reject) => {
