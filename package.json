@@ -1,12 +1,13 @@
 {
-  "name": "fffs",
+  "name": "frstcmfrstsvd",
   "version": "1.0.0",
   "description": "Asynchronous iterate an array of promises: First fulfilled is first processed",
   "author": "Casiano Rodriguez-Leon @crguezl",
   "license": "MIT",
   "scripts": {
-    "test": "node test/hello-fffs.js",
-    "start": "node test/reject-fffs.js" 
+    "test": "node test/hello-frstcmfrstsvd.js",
+    "start": "node test/reject-frstcmfrstsvd.js",
+    "push": "git ci -am frstcmfrstsvd && git push"
   },
   "homepage": "",
   "repository": {

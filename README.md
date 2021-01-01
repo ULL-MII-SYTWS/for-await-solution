@@ -1,13 +1,13 @@
-# First to be Fulfilled is First to be Served
+# First Promise to Come is First to be Served
 
-Returns an async generator that receives an array of promises (not an iterator) and yields the values in the order they are fulfilled
+Receives an array of promises (not an iterator) and returns an async generator that yields objects `{ value: promiseResult, index: promiseIndex, status: 'fulfilled' }` in the order they are fulfilled. In case of rejection yields an object `{ reason: errorMessage, index: promiseIndex, status: 'rejected' }`
 
 ## Usage
 
 ```js
-import { fffs } from 'fffs';
+import { frstcmfrstsvd } from 'frstcmfrstsvd';
 
-for await (let result of fffs(arrayOfPromises)) {
+for await (let result of frstcmfrstsvd(arrayOfPromises)) {
    ... // First promise to fulfill is processed first 
 }
 ```
@@ -50,8 +50,10 @@ z
 But sometimes you want to process the results as soon as the promises yield them. To achieve it, import the current module and use it as in this example:
 
 ```javascript
-import { fffs } from '../index.js';
 
+import { frstcmfrstsvd } from '../index.js';
+
+// See https://stackoverflow.com/questions/40920179/should-i-refrain-from-handling-promise-rejection-asynchronously
 process.on('rejectionHandled', () => { });
 process.on('unhandledRejection', error => {
     console.log('unhandledRejection');
@@ -61,17 +63,17 @@ const sleep = time => new Promise(resolve => setTimeout(resolve, time));
 
 const arr = [
     sleep(2000).then(() => 'a'),
-    Promise.resolve('x'),
+    'x',
     sleep(1000).then(() => 'b'),
-    Promise.resolve('y'),
+    'y',
     sleep(3000).then(() => 'c'),
-    Promise.resolve('z'),
+    'z',
 ];
 
-console.log(fffs);
+console.log(frstcmfrstsvd);
 
 (async () => {
-    for await (let item of fffs(arr)) {
+    for await (let item of frstcmfrstsvd(arr)) {
         console.log("item = ",item);
     }
 })()
@@ -80,14 +82,15 @@ console.log(fffs);
 Output:
 
 ```
-➜  test-racing-for-await-of git:(master) ✗ node test/hello-fffs.js
-[AsyncGeneratorFunction: fffs]
-item =  { result: 'x', index: 1 }
-item =  { result: 'y', index: 3 }
-item =  { result: 'z', index: 5 }
-item =  { result: 'b', index: 2 }
-item =  { result: 'a', index: 0 }
-item =  { result: 'c', index: 4 }
+> node test/hello-frstcmfrstsvd.js
+
+[AsyncGeneratorFunction: frstcmfrstsvd]
+item =  { value: 'x', index: 1, status: 'fulfilled' }
+item =  { value: 'y', index: 3, status: 'fulfilled' }
+item =  { value: 'z', index: 5, status: 'fulfilled' }
+item =  { value: 'b', index: 2, status: 'fulfilled' }
+item =  { value: 'a', index: 0, status: 'fulfilled' }
+item =  { value: 'c', index: 4, status: 'fulfilled' }
 ```
 
 ## Error Management Example
@@ -96,7 +99,7 @@ Here is an example of use with rejection:
 
 ```js
 
-import { fffs } from '../index.js';
+import { frstcmfrstsvd } from '../index.js';
 
 // See https://stackoverflow.com/questions/40920179/should-i-refrain-from-handling-promise-rejection-asynchronously
 process.on('rejectionHandled', () => { });
@@ -118,7 +121,7 @@ const arr = [
 
 (async () => {
     try {
-        for await (let item of fffs(arr)) {
+        for await (let item of frstcmfrstsvd(arr)) {
             console.log("item = ",item);
         }
     } catch(e) {
@@ -131,12 +134,11 @@ const arr = [
 Gives as output:
 
 ```
-➜  test-racing-for-await-of git:(main) node test/reject-fffs.js 
-item =  { result: 'x', index: 1 }
-item =  { result: 'y', index: 3 }
-item =  { result: 'z', index: 5 }
-item =  { result: 'b', index: 2 }
-item =  { result: 'a', index: 0 }
-Catched!:
- { error: 'Ohhh:\n', index: 4 }
+➜  test-racing-for-await-of git:(main) ✗ node test/reject-frstcmfrstsvd.js
+item =  { value: 'x', index: 1, status: 'fulfilled' }
+item =  { value: 'y', index: 3, status: 'fulfilled' }
+item =  { value: 'z', index: 5, status: 'fulfilled' }
+item =  { value: 'b', index: 2, status: 'fulfilled' }
+item =  { value: 'a', index: 0, status: 'fulfilled' }
+item =  { reason: 'Ohhh:\n', index: 4, status: 'rejected' }
  ```

@@ -14,7 +14,7 @@ async function* auxIterator(promises) {
     yield * auxIterator(promises)
 }
 
-async function * fffs(promises) {
+async function * frstcmfrstsvd(promises) {
   let wrappedPromises = promises.map((p, i) => {
     return new Promise((resolve, reject) => {
       Promise.resolve(p).then(r => resolve({value: r, index: i, status: 'fulfilled'}))
@@ -24,5 +24,5 @@ async function * fffs(promises) {
 
   yield * await auxIterator(wrappedPromises);
 }
-export { fffs }
+export { frstcmfrstsvd }
 
