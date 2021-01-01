@@ -9,13 +9,13 @@
     "start": "node test/reject-frstcmfrstsvd.js",
     "push": "git ci -am frstcmfrstsvd && git push"
   },
-  "homepage": "",
+  "homepage": "https://github.com/crguezl/frstcmfrstsvd/blob/main/README.md",
   "repository": {
     "type": "git",
-    "url": ""
+    "url": "https://github.com/crguezl/frstcmfrstsvd.git"
   },
   "bugs": {
-    "url": ""
+    "url": "https://github.com/crguezl/frstcmfrstsvd/issues"
   },
   "main": "index.js",
   "type": "module",
@@ -23,6 +23,7 @@
     "await",
     "async",
     "iterator",
+    "promise-allsettled",
     "for-await-of",
     "promise"
   ]
