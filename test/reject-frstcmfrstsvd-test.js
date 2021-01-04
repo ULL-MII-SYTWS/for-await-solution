@@ -22,24 +22,21 @@ const sleep = time =>
     new Promise(resolve => setTimeout(resolve, time));
 
 const arr = [
-    sleep(2000).then(() => 'a'),
+    sleep(200).then(() => 'a'),
     'x',
-    sleep(1000).then(() => 'b'),
+    sleep(100).then(() => 'b'),
     'y',
-    sleep(3000).then(() => { throw `Ohhh:\n` }),
+    sleep(300).then(() => { throw `Ohhh:\n` }),
     'z',
 ];
 
 test('promises with reject', async () => {
-    (async () => {
-        try {
-            for await (let item of frstcmfrstsvd(arr)) {
-                result.push(item);
-            }
-            expect(result).toEqual(expected);
-        } catch (e) {
-            console.log('Catched!:\n', e);
+    try {
+        for await (let item of frstcmfrstsvd(arr)) {
+            result.push(item);
         }
-    })()
-
+        expect(result).toEqual(expected);
+    } catch (e) {
+        console.log('Catched!:\n', e);
+    }
 });

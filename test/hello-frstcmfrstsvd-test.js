@@ -20,11 +20,11 @@ test('checking order of frstcmfrstsvd', async () => {
     const sleep = time => new Promise(resolve => setTimeout(resolve, time));
 
     const arr = [
-        sleep(2000).then(() => 'a'),
+        sleep(200).then(() => 'a'),
         'x',
-        sleep(1000).then(() => 'b'),
+        sleep(100).then(() => 'b'),
         'y',
-        sleep(3000).then(() => 'c'),
+        sleep(300).then(() => 'c'),
         'z',
     ];
 
