@@ -60,7 +60,7 @@ But sometimes you want to process the results as soon as the promises yield them
 
 ```javascript
 
-import { frstcmfrstsvd } from '../index.js';
+import frstcmfrstsvd from 'frstcmfrstsvd';
 
 // See https://stackoverflow.com/questions/40920179/should-i-refrain-from-handling-promise-rejection-asynchronously
 process.on('rejectionHandled', () => { });
@@ -107,7 +107,7 @@ Here is an example of use with rejection:
 
 ```js
 
-import { frstcmfrstsvd } from '../index.js';
+import frstcmfrstsvd from 'frstcmfrstsvd';
 
 // See https://stackoverflow.com/questions/40920179/should-i-refrain-from-handling-promise-rejection-asynchronously
 process.on('rejectionHandled', () => { });
