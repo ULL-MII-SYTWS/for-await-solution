@@ -1,6 +1,6 @@
 {
   "name": "frstcmfrstsvd",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "Asynchronous iterate an array of promises: First fulfilled is first processed",
   "author": "Casiano Rodriguez-Leon @crguezl",
   "license": "MIT",
