@@ -45,7 +45,7 @@ const sleep = time => new Promise(resolve => setTimeout(resolve, time));
 Output:
 
 ```
-➜  test-racing-for-await-of git:(master) ✗ node test/for-await-simple.js
+➜  firstcomefirstserved git:(main) node examples/for-await-simple.js 
 a
 x
 b
@@ -91,8 +91,7 @@ console.log(frstcmfrstsvd);
 Output:
 
 ```
-> node test/hello-frstcmfrstsvd.js
-
+➜  firstcomefirstserved git:(main) node examples/hello-frstcmfrstsvd.mjs 
 [AsyncGeneratorFunction: frstcmfrstsvd]
 item =  { value: 'x', index: 1, status: 'fulfilled' }
 item =  { value: 'y', index: 3, status: 'fulfilled' }
@@ -143,23 +142,29 @@ const arr = [
 Gives as output:
 
 ```
-➜  test-racing-for-await-of git:(main) ✗ node test/reject-frstcmfrstsvd.js
+➜  firstcomefirstserved git:(main) ✗ node examples/reject-frstcmfrstsvd.mjs 
 item =  { value: 'x', index: 1, status: 'fulfilled' }
 item =  { value: 'y', index: 3, status: 'fulfilled' }
 item =  { value: 'z', index: 5, status: 'fulfilled' }
 item =  { value: 'b', index: 2, status: 'fulfilled' }
 item =  { value: 'a', index: 0, status: 'fulfilled' }
 item =  { reason: 'Ohhh:\n', index: 4, status: 'rejected' }
- ```
+```
 
  ## Performance seems better than allSettled
 
  No exhaustive tests yet, but at first view, performance seems to be a bit better than  [Promise.allSettled](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise/allSettled). 
 
  ```
- ➜  firstcomefirstserved git:(main) ✗ node examples/performance-reject-frstcmfrstsvd.js
-frstcmfrstsvd: 322.674ms
-allsettled: 330.14ms
+ ➜  firstcomefirstserved git:(main) ✗ node examples/performance-reject-frstcmfrstsvd.mjs
+frstcmfrstsvd: 320.399ms
+allsettled: 329.469ms
+➜  firstcomefirstserved git:(main) ✗ node examples/performance-reject-frstcmfrstsvd.mjs
+frstcmfrstsvd: 323.915ms
+allsettled: 331.516ms
+➜  firstcomefirstserved git:(main) ✗ node examples/performance-reject-frstcmfrstsvd.mjs
+frstcmfrstsvd: 324.116ms
+allsettled: 331.935ms
 ```
 
 See file [examples/performance-reject-frstcmfrstsvd.js](examples/performance-reject-frstcmfrstsvd.js)
