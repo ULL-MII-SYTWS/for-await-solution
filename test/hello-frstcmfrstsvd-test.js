@@ -15,22 +15,21 @@ let expected = [
     { value: 'c', index: 4, status: 'fulfilled' }
 ];
 
-    test('checking order of frstcmfrstsvd', async () => {
+test('checking order of frstcmfrstsvd', async () => {
 
-        const sleep = time => new Promise(resolve => setTimeout(resolve, time));
+    const sleep = time => new Promise(resolve => setTimeout(resolve, time));
 
-        const arr = [
-            sleep(2000).then(() => 'a'),
-            'x',
-            sleep(1000).then(() => 'b'),
-            'y',
-            sleep(3000).then(() => 'c'),
-            'z',
-        ];
-        
-            for await (let item of frstcmfrstsvd(arr)) {
-                result.push(item);
-            }
-            expect(result).toEqual(expected);
-        
-    });
+    const arr = [
+        sleep(2000).then(() => 'a'),
+        'x',
+        sleep(1000).then(() => 'b'),
+        'y',
+        sleep(3000).then(() => 'c'),
+        'z',
+    ];
+
+    for await (let item of frstcmfrstsvd(arr)) {
+        result.push(item);
+    }
+    expect(result).toEqual(expected);
+});
