@@ -7,10 +7,13 @@ process.on('unhandledRejection', error => {
     console.log('unhandledRejection');
 });
 
-const sleep = time => 
-   new Promise(resolve => setTimeout(resolve, time));
+const sleep = time =>
+    new Promise(resolve => setTimeout(resolve, time));
 
-const arr = [
+
+const Times = 10;
+
+const createPromises = () => [ // Recreate the promises each time
     sleep(20).then(() => 'a'),
     'x',
     sleep(10).then(() => 'b'),
@@ -22,27 +25,27 @@ const arr = [
 (async () => {
     try {
         console.time('frstcmfrstsvd');
-        for await (let item of frstcmfrstsvd(arr)) {
-            console.log("item = ",item);
+        for (let i = 0; i < Times; i++) {
+            const arr = createPromises();
+            for await (let item of frstcmfrstsvd(arr)) { }
         }
         console.timeEnd('frstcmfrstsvd')
-    } catch(e) {
-       console.log('Catched!:\n', e);
+    } catch (e) {
+        console.log('Catched!:\n', e);
     }
 })();
 
 (async () => {
     try {
         console.time('allsettled');
-        let results = await Promise.allSettled(arr);
-        
-        results.forEach( (item) => console.log(`item = ${JSON.stringify(item)}`))
-        
+        for (let i = 0; i < Times; i++) {
+            const arr = createPromises();
+            await Promise.allSettled(arr);
+        }
         console.timeEnd('allsettled')
-    } catch(e) {
-       console.log('Catched!:\n', e);
+    } catch (e) {
+        console.log('Catched!:\n', e);
     }
-
 })()
 
 

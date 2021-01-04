@@ -12,7 +12,14 @@ for await (let result of frstcmfrstsvd(arrayOfPromises)) {
 }
 ```
 
+## Disclaimer 
+
+This is more an academic module to be posed as exercise for my students than a 
+finished module
+
 ## Introduction
+
+### Motivation
 
 If you use for-await-of on an array of promises, you iterate over it in the specified order, doesn't matter if the next promise in the given array is resolved before the previous one:
 
@@ -46,6 +53,8 @@ y
 c
 z
 ```
+
+### Goal
 
 But sometimes you want to process the results as soon as the promises yield them. To achieve it, import the current module and use it as in this example:
 
@@ -143,65 +152,14 @@ item =  { value: 'a', index: 0, status: 'fulfilled' }
 item =  { reason: 'Ohhh:\n', index: 4, status: 'rejected' }
  ```
 
- ## Performance
+ ## Performance seems better than allSettled
 
- No exhaustive tests yet, but at first view, performance seems to be similar to  [Promise.allSettled](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise/allSettled). 
- The execution of the test below gives these times:
+ No exhaustive tests yet, but at first view, performance seems to be a bit better than  [Promise.allSettled](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise/allSettled). 
 
  ```
- ➜  firstcomefirstserved git:(main) ✗ node test/performance-reject-frstcmfrstsvd.js
-allsettled: 3.002s
-frstcmfrstsvd: 3.002s
- ```
+ ➜  firstcomefirstserved git:(main) ✗ node examples/performance-reject-frstcmfrstsvd.js
+frstcmfrstsvd: 322.674ms
+allsettled: 330.14ms
+```
 
-This is the timed code:
-
- ```js
-
-import { frstcmfrstsvd } from '../index.js';
-
-// See https://stackoverflow.com/questions/40920179/should-i-refrain-from-handling-promise-rejection-asynchronously
-process.on('rejectionHandled', () => { });
-process.on('unhandledRejection', error => {
-    console.log('unhandledRejection');
-});
-
-const sleep = time => 
-   new Promise(resolve => setTimeout(resolve, time));
-
-const arr = [
-    sleep(2000).then(() => 'a'),
-    'x',
-    sleep(1000).then(() => 'b'),
-    'y',
-    sleep(3000).then(() => { throw `Ohhh:\n` }),
-    'z',
-];
-
-(async () => {
-    try {
-        console.time('frstcmfrstsvd');
-        for await (let item of frstcmfrstsvd(arr)) {
-            console.log("item = ",item);
-        }
-        console.timeEnd('frstcmfrstsvd')
-    } catch(e) {
-       console.log('Catched!:\n', e);
-    }
-
-})();
-
-(async () => {
-    try {
-        console.time('allsettled');
-        let results = await Promise.allSettled(arr);
-        
-        results.forEach( (item) => console.log(`item = ${JSON.stringify(item)}`))
-        
-        console.timeEnd('allsettled')
-    } catch(e) {
-       console.log('Catched!:\n', e);
-    }
-
-})()
- ```
+See file [examples/performance-reject-frstcmfrstsvd.js](examples/performance-reject-frstcmfrstsvd.js)
