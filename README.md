@@ -167,4 +167,4 @@ frstcmfrstsvd: 324.116ms
 allsettled: 331.935ms
 ```
 
-See file [examples/performance-reject-frstcmfrstsvd.js](examples/performance-reject-frstcmfrstsvd.js)
+See file [examples/performance-reject-frstcmfrstsvd.mjs](examples/performance-reject-frstcmfrstsvd.mjs)
