@@ -24,5 +24,5 @@ async function * frstcmfrstsvd(promises) {
 
   yield * await auxIterator(wrappedPromises);
 }
-export { frstcmfrstsvd }
+export default frstcmfrstsvd
 

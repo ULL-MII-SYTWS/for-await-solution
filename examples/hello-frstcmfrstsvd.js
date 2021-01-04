@@ -1,5 +1,5 @@
 
-import { frstcmfrstsvd } from '../index.js';
+import frstcmfrstsvd from '../index.js';
 
 // See https://stackoverflow.com/questions/40920179/should-i-refrain-from-handling-promise-rejection-asynchronously
 process.on('rejectionHandled', () => { });

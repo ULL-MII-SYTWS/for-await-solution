@@ -5,9 +5,11 @@
   "author": "Casiano Rodriguez-Leon @crguezl",
   "license": "MIT",
   "scripts": {
-    "test": "node test/hello-frstcmfrstsvd.js",
-    "start": "node test/reject-frstcmfrstsvd.js",
-    "push": "git ci -am frstcmfrstsvd && git push"
+    "test": "ava",
+    "fulfilled": "node examples/hello-frstcmfrstsvd.js",
+    "reject": "node examples/reject-frstcmfrstsvd.js",
+    "performance": "node examples/performance-reject-frstcmfrstsvd.js",
+    "push": "git ci -am frstcmfrsrtsvd && git push"
   },
   "homepage": "https://github.com/crguezl/frstcmfrstsvd/blob/main/README.md",
   "repository": {
@@ -26,5 +28,6 @@
     "promise-allsettled",
     "for-await-of",
     "promise"
-  ]
+  ],
+  "devDependencies": {}
 }
