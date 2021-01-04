@@ -1,4 +1,4 @@
-import { frstcmfrstsvd } from '../index.js';
+import frstcmfrstsvd from '../index.js';
 
 // See https://stackoverflow.com/questions/40920179/should-i-refrain-from-handling-promise-rejection-asynchronously
 process.on('rejectionHandled', () => { });
@@ -15,7 +15,7 @@ let expected = [
     { value: 'c', index: 4, status: 'fulfilled' }
 ];
 
-    test('Compute the square of a number', async () => {
+    test('checking order of frstcmfrstsvd', async () => {
 
         const sleep = time => new Promise(resolve => setTimeout(resolve, time));
 
@@ -27,11 +27,10 @@ let expected = [
             sleep(3000).then(() => 'c'),
             'z',
         ];
-
         
             for await (let item of frstcmfrstsvd(arr)) {
                 result.push(item);
             }
-            expect(result[0].value === expected[0].value);
+            expect(result).toEqual(expected);
         
     });
