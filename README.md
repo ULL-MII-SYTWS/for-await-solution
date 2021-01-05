@@ -5,11 +5,23 @@ Receives an array of promises (not an iterator) and returns an async generator t
 ## Usage
 
 ```js
-import { frstcmfrstsvd } from 'frstcmfrstsvd';
+import frstcmfrstsvd from 'frstcmfrstsvd';
 
 for await (let result of frstcmfrstsvd(arrayOfPromises)) {
    ... // First promise to fulfill is processed first 
 }
+```
+
+## Installation
+
+```
+npm i frstcmfrstsvd
+```
+
+or
+
+```
+yarn add frstcmfrstsvd
 ```
 
 ## Disclaimer 
@@ -60,7 +72,7 @@ But sometimes you want to process the results as soon as the promises yield them
 
 ```javascript
 
-import frstcmfrstsvd from 'frstcmfrstsvd';
+import firstComeFirstServed from 'frstcmfrstsvd';
 
 // See https://stackoverflow.com/questions/40920179/should-i-refrain-from-handling-promise-rejection-asynchronously
 process.on('rejectionHandled', () => { });
@@ -79,10 +91,10 @@ const arr = [
     'z',
 ];
 
-console.log(frstcmfrstsvd);
+console.log(firstComeFirstServed);
 
 (async () => {
-    for await (let item of frstcmfrstsvd(arr)) {
+    for await (let item of firstComeFirstServed(arr)) {
         console.log("item = ",item);
     }
 })()
