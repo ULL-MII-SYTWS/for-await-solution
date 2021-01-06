@@ -1,3 +1,6 @@
+[![NPM](https://nodei.co/npm/frstcmfrstsvd.png?mini=true)](https://npmjs.org/package/frstcmfrstsvd)
+
+
 # First Promise to Come is First to be Served
 
 Receives an array of promises (not an iterator) and returns an async generator that yields objects like  `{ value: promiseResult, index: promiseIndex, status: 'fulfilled' }` in the order they are fulfilled. In case of rejection, the generator yields objects with this shape: `{ reason: errorMessage, index: promiseIndex, status: 'rejected' }`
