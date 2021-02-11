@@ -6,9 +6,9 @@
   "license": "MIT",
   "scripts": {
     "test": "NODE_NO_WARNINGS=1 NODE_OPTIONS=--experimental-vm-modules jest",
-    "fulfilled": "node examples/hello-frstcmfrstsvd.js",
-    "reject": "node examples/reject-frstcmfrstsvd.js",
-    "performance": "node examples/performance-reject-frstcmfrstsvd.js",
+    "fulfilled": "node examples/hello-frstcmfrstsvd.mjs",
+    "reject": "node examples/reject-frstcmfrstsvd.mjs",
+    "performance": "node examples/performance-reject-frstcmfrstsvd.mjs",
     "push": "git ci -am frstcmfrsrtsvd && git push"
   },
   "homepage": "https://github.com/crguezl/frstcmfrstsvd/blob/main/README.md",

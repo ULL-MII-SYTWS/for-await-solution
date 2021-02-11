@@ -22,30 +22,32 @@ const createPromises = () => [ // Recreate the promises each time
     'z',
 ];
 
-(async () => {
-    try {
-        console.time('frstcmfrstsvd');
-        for (let i = 0; i < Times; i++) {
-            const arr = createPromises();
-            for await (let item of frstcmfrstsvd(arr)) { }
+async function checkPerformance() {
+    await (async () => {
+        try {
+            console.time('frstcmfrstsvd');
+            for (let i = 0; i < Times; i++) {
+                const arr = createPromises();
+                for await (let item of frstcmfrstsvd(arr)) { }
+            }
+            console.timeEnd('frstcmfrstsvd')
+        } catch (e) {
+            console.log('Catched!:\n', e);
         }
-        console.timeEnd('frstcmfrstsvd')
-    } catch (e) {
-        console.log('Catched!:\n', e);
-    }
-})();
+    })();
 
-(async () => {
-    try {
-        console.time('allsettled');
-        for (let i = 0; i < Times; i++) {
-            const arr = createPromises();
-            await Promise.allSettled(arr);
+    await (async () => {
+        try {
+            console.time('allsettled');
+            for (let i = 0; i < Times; i++) {
+                const arr = createPromises();
+                await Promise.allSettled(arr);
+            }
+            console.timeEnd('allsettled')
+        } catch (e) {
+            console.log('Catched!:\n', e);
         }
-        console.timeEnd('allsettled')
-    } catch (e) {
-        console.log('Catched!:\n', e);
-    }
-})()
+    })()
+}
 
-
+checkPerformance();

@@ -168,20 +168,26 @@ item =  { value: 'a', index: 0, status: 'fulfilled' }
 item =  { reason: 'Ohhh:\n', index: 4, status: 'rejected' }
 ```
 
- ## Performance seems better than allSettled
+ ## Performance Study
 
- No exhaustive tests yet, but at first view, performance seems to be a bit better than  [Promise.allSettled](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise/allSettled). 
+ No exhaustive tests yet, but at first view, performance of [Promise.allSettled](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise/allSettled) seems to be a bit better:
 
  ```
- ➜  firstcomefirstserved git:(main) ✗ node examples/performance-reject-frstcmfrstsvd.mjs
-frstcmfrstsvd: 320.399ms
-allsettled: 329.469ms
-➜  firstcomefirstserved git:(main) ✗ node examples/performance-reject-frstcmfrstsvd.mjs
-frstcmfrstsvd: 323.915ms
-allsettled: 331.516ms
-➜  firstcomefirstserved git:(main) ✗ node examples/performance-reject-frstcmfrstsvd.mjs
-frstcmfrstsvd: 324.116ms
-allsettled: 331.935ms
+> node examples/performance-reject-frstcmfrstsvd.mjs
+frstcmfrstsvd: 323.104ms
+allsettled: 317.319ms
+> node examples/performance-reject-frstcmfrstsvd.mjs
+frstcmfrstsvd: 327.142ms
+allsettled: 315.415ms
+> node examples/performance-reject-frstcmfrstsvd.mjs
+frstcmfrstsvd: 322.753ms
+allsettled: 318.955ms
+> node examples/performance-reject-frstcmfrstsvd.mjs
+frstcmfrstsvd: 325.562ms
+allsettled: 317.375ms
+> node examples/performance-reject-frstcmfrstsvd.mjs
+frstcmfrstsvd: 322.25ms
+allsettled: 318.09ms
 ```
 
 See file [examples/performance-reject-frstcmfrstsvd.mjs](examples/performance-reject-frstcmfrstsvd.mjs)
