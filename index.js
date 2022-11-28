@@ -1,28 +1,26 @@
-// promises is an Array not an Iterable
-async function* auxIterator(promises) {
-  let wrappedPromises = promises.map((p, i) => {
-    return new Promise((resolve, reject) => {
-      p.then(r => resolve([r,i]))
-      .catch(e => reject(e))
-    })
-  });
+async function* frstcmfrstsvd(promises) {
+  let resolvers = []
+  let proms = []
+  for (let i = 0; i < promises.length; i++) {
+    proms.push(new Promise((res, rej) => {
+      resolvers.push(res)
+    }))
+  }
 
-  let [r, i] = await Promise.race(wrappedPromises);
-  yield r;
-  promises.splice(i,1);
-  if (promises.length) 
-    yield * auxIterator(promises)
+  promises.forEach((p, i) => {
+    Promise.resolve(p).then(r => {
+      let res = resolvers.shift()
+      res({ value: r, index: i, status: 'fulfilled' })
+    }, err => {
+      let res = resolvers.shift()
+      res({ reason: err, index: i, status: 'rejected' })
+    })
+  })
+
+  for await (let result of proms) {
+    yield result
+  }
 }
 
-async function * frstcmfrstsvd(promises) {
-  let wrappedPromises = promises.map((p, i) => {
-    return new Promise((resolve, reject) => {
-      Promise.resolve(p).then(r => resolve({value: r, index: i, status: 'fulfilled'}))
-      .catch(e => resolve({reason: e, index: i, status: 'rejected'}))
-    })
-  });
-
-  yield * await auxIterator(wrappedPromises);
-}
 export default frstcmfrstsvd
 
