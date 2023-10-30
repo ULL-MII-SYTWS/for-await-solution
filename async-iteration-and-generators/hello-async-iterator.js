@@ -40,3 +40,17 @@ let range = {
   4. To iterate, we use for await(let value of range) (4), namely add “await” after “for”. 
      It calls range[Symbol.asyncIterator]() once, and then its next() for values.
   */
+ 
+try {
+  console.log([ ...range ]) // Error, no Symbol.iterator
+} catch (e) {
+  console.log("Spread syntax won't work: That’s natural, as it expects to find Symbol.iterator, not Symbol.asyncIterator.\n", e.message)
+}
+
+try {
+  for (let value of range) { // Error, no Symbol.iterator
+    console.log(value)
+  }
+} catch (e) {
+  console.log("for..of syntax won't work: That’s natural, as it expects to find Symbol.iterator, not Symbol.asyncIterator.\n", e.message)
+}
