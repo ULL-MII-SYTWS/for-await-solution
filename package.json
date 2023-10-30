@@ -9,7 +9,7 @@
     "fulfilled": "node examples/hello-frstcmfrstsvd.mjs",
     "reject": "node examples/reject-frstcmfrstsvd.mjs",
     "performance": "node examples/performance-reject-frstcmfrstsvd.mjs",
-    "push": "git ci -am frstcmfrsrtsvd && git push"
+    "save": "git ci -am for-await-solution && git push -u origin main"
   },
   "homepage": "https://github.com/crguezl/frstcmfrstsvd/blob/main/README.md",
   "repository": {
