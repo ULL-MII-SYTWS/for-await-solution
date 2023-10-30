@@ -24,3 +24,5 @@ Examples from the chapter [Async iteration and generators](https://javascript.in
     In file [fetch-commits.js](fetch-commits.js) you'll find the function `fetchCommits(repo)` that gets commits for us, making requests whenever needed. The function cares about all pagination stuff. 
 
     See <https://docs.github.com/en/rest/guides/using-pagination-in-the-rest-api?apiVersion=2022-11-28> for more details about GitHub pagination.
+
+    The program [paginated-data.js](paginated-data.js) uses the function `fetchCommits(repo)` to get commits for a random repository.

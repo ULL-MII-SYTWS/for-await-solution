@@ -15,7 +15,8 @@ import { fetchCommits } from './fetch-commits.js';
 
     for await (const commit of fetchCommits(repoName)) {
 
-        console.log(commit?.author?.login);
+        if (!commit.author) console.log(commit.commit.author.name);
+        else console.log(commit?.author?.login || "no login known");
 
         if (++count == 100) { // let's stop at 100 commits
             break;
