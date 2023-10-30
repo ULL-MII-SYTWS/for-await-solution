@@ -41,6 +41,9 @@ let range = {
      It calls range[Symbol.asyncIterator]() once, and then its next() for values.
   */
  
+  let g = range[Symbol.asyncIterator]();
+  console.log(g.next());
+
 try {
   console.log([ ...range ]) // Error, no Symbol.iterator
 } catch (e) {
