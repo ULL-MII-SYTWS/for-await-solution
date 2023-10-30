@@ -14,7 +14,7 @@ Examples from the chapter [Async iteration and generators](https://javascript.in
 4. GitHub allows us to retrieve commits using pagination:
 
     - We should make a request to fetch in the form <https://api.github.com/repos/{repo}/commits>.
-    - It responds with a JSON of 30 commits, and also provides a **link to the next page in the Link header**. The `Link` header loks like:
+    - It responds with a JSON of 30 commits, and also provides a **link to the next page in the Link header**. The `Link` header looks like:
      
       ```
       Link: <https://api.github.com/repositories/2325298/commits?page=2>; rel="next", <https://api.github.com/repositories/2325298/commits?page=40575>; rel="last"
