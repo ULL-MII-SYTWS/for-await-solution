@@ -10,4 +10,11 @@ Examples from the chapter [Async iteration and generators](https://javascript.in
 
    Similar to that, async generators can be used instead of `Symbol.asyncIterator` to implement the asynchronous iteration.
 
-   For instance, we can make the range object generate values asynchronously, once per second as in [async-iterable-range.js](async-iterable-range.js):
+   For instance, we can make the range object generate values asynchronously, once per second as in [async-iterable-range.js](async-iterable-range.js)
+4. GitHub allows us to retrieve commits using pagination:
+
+    - We should make a request to fetch in the form <https://api.github.com/repos/{repo}/commits>.
+    - It responds with a JSON of 30 commits, and also provides a **link to the next page in the Link header**.
+    - We can use that link for the next request, to get more commits, and so on.
+
+    In file [fetch-commits.js](fetch-commits.js) you'll find the function `fetchCommits(repo)` that gets commits for us, making requests whenever needed. And it carea about all pagination stuff. It’ll be a simple async iteration `for await..of`
