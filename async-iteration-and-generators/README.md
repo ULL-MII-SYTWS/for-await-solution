@@ -21,5 +21,6 @@ Examples from the chapter [Async iteration and generators](https://javascript.in
       ```
     - We can use that link for the next request, to get more commits, and so on.
 
-    In file [fetch-commits.js](fetch-commits.js) you'll find the function `fetchCommits(repo)` that gets commits for us, making requests whenever needed. And it carea about all pagination stuff. It’ll be a simple async iteration `for await..of`. 
+    In file [fetch-commits.js](fetch-commits.js) you'll find the function `fetchCommits(repo)` that gets commits for us, making requests whenever needed. The function cares about all pagination stuff. 
+
     See <https://docs.github.com/en/rest/guides/using-pagination-in-the-rest-api?apiVersion=2022-11-28> for more details about GitHub pagination.
