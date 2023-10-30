@@ -30,3 +30,13 @@ let range = {
     console.log();
   })()
   
+  /* 
+  The structure is similar to regular iterators:
+  1. To make an object asynchronously iterable, it must have a method Symbol.asyncIterator (1).
+  2. This method must return the object with next() method returning a promise (2).
+  3. The next() method doesn’t have to be async, it may be a regular method returning a promise, 
+     but async allows us to use await, so that’s convenient. 
+     Here we just delay for a second (3).
+  4. To iterate, we use for await(let value of range) (4), namely add “await” after “for”. 
+     It calls range[Symbol.asyncIterator]() once, and then its next() for values.
+  */
