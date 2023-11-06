@@ -49,6 +49,7 @@ Examples from the chapter [Async iteration and generators](https://javascript.in
         ...
       ]
       ```
+      The `author` is the person who originally wrote the work, whereas the `committer` is the person who last applied the work.
     - See [Using link headers](https://docs.github.com/en/rest/guides/using-pagination-in-the-rest-api?apiVersion=2022-11-28#using-link-headers) in the GitHub docs.
     - See also <https://docs.github.com/es/rest/commits/commits?apiVersion=2022-11-28#list-commits>
     - See <https://docs.github.com/en/rest/guides/using-pagination-in-the-rest-api?apiVersion=2022-11-28> for more details about GitHub pagination.
