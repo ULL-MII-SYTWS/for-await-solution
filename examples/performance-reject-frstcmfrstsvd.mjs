@@ -22,6 +22,10 @@ const createPromises = () => [ // Recreate the promises each time
     'z',
 ];
 
+// The console.timeEnd(label) stops a timer that was previously started by calling console.time(label).
+// the labels is a string representing the name of the timer to stop. 
+// Once stopped, the elapsed time is automatically displayed in the console along 
+// with an indicator that the time has ended. If the label is omitted, the label "default" is used.
 async function checkPerformance() {
     await (async () => {
         try {
