@@ -3,7 +3,7 @@ Examples from the chapter [Async iteration and generators](https://javascript.in
 
 ## hello-async-iterator.js
 
-[hello-async-iterator.js](hello-async-iterator.js) - Hello async iterator
+[hello-async-iterator.js](hello-async-iterator.js) 
 
 ## async-generators-finally.js
 
