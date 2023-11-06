@@ -1,3 +1,5 @@
+#!/Users/casianorodriguezleon/.nvm/versions/node/v20.5.0/bin/node
+/* needs node >= v18 */
 // Octokit.js
 // https://github.com/octokit/core.js#readme
 import { Octokit } from "@octokit/core";
@@ -6,8 +8,8 @@ const octokit = new Octokit({
 })
 
 let result = await octokit.request('GET /repos/torvalds/linux/commits', {
-    owner: 'OWNER',
-    repo: 'REPO',
+    owner: 'torvalds',
+    repo: 'linux',
     headers: {
         'X-GitHub-Api-Version': '2022-11-28'
     }
