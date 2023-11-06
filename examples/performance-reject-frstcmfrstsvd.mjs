@@ -1,7 +1,7 @@
 
 import frstcmfrstsvd from '../index.js';
 
-// See https://stackoverflow.com/questions/40920179/should-i-refrain-from-handling-promise-rejection-asynchronously
+// See https://stackoverflow.com/questions/`40920179/should-i-refrain-from-handling-promise-rejection-asynchronously
 process.on('rejectionHandled', () => { });
 process.on('unhandledRejection', error => {
     console.log('unhandledRejection');
