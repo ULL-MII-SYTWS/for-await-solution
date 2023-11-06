@@ -6,10 +6,10 @@ import { Octokit } from "@octokit/core";
 const octokit = new Octokit({
     auth: process.env.GITHUB_TOKEN,
 })
-
-let result = await octokit.request('GET /repos/torvalds/linux/commits', {
-    owner: 'torvalds',
-    repo: 'linux',
+let [ owner, repo ] = (process.argv[2] || 'torvalds/linux').split("/");
+let result = await octokit.request('GET /repos/{owner}/{repo}/commits', {
+    owner, // Set the value for the `owner` placeholder
+    repo,  // Set the value for the `repo` placeholder
     headers: {
         'X-GitHub-Api-Version': '2022-11-28'
     }
