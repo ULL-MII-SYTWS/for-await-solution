@@ -22,6 +22,33 @@ Examples from the chapter [Async iteration and generators](https://javascript.in
 
       - See the script [async-iteration-and-generators/get-commits.sh](/async-iteration-and-generators/get-commits.sh) and [async-iteration-and-generators/get-commits-with-curl.sh](/async-iteration-and-generators/get-commits-with-curl.sh)
     - We can use that link for the next request, to get more commits, and so on.
+    - The body  is an array that looks like:
+      ```json
+      [
+        {
+          "sha": "d2f51b3516dade79269ff45eae2a7668ae711b25",
+          "node_id": "C_kwDOACN7MtoAKGQyZjUxYjM1MTZkYWRlNzkyNjlmZjQ1ZWFlMmE3NjY4YWU3MTFiMjU",
+          "commit": {
+              "author": { "name": "Linus Torvalds", "email": "torvalds@linux-foundation.org", "date": "2023-11-06T02:49:40Z"
+              },
+              "committer": { "name": "Linus Torvalds", "email": "torvalds@linux-foundation.org", "date": "2023-11-06T02:49:40Z"
+              },
+              "message": " ...",
+              "tree": { ... },
+              "url": "https://api.github.com/repos/torvalds/linux/git/commits/d2f51b3516dade79269ff45eae2a7668ae711b25",
+              "comment_count": 0,
+              "verification": { ... }
+          },
+          "url": "https://api.github.com/repos/torvalds/linux/commits/d2f51b3516dade79269ff45eae2a7668ae711b25",
+          "html_url": "https://github.com/torvalds/linux/commit/d2f51b3516dade79269ff45eae2a7668ae711b25",
+          "comments_url": "https://api.github.com/repos/torvalds/linux/commits/d2f51b3516dade79269ff45eae2a7668ae711b25/comments",
+          "author": { ... },
+          "committer": { ... },
+          "parents": [ ... ]
+        },
+        ...
+      ]
+      ```
     - See [Using link headers](https://docs.github.com/en/rest/guides/using-pagination-in-the-rest-api?apiVersion=2022-11-28#using-link-headers) in the GitHub docs.
     - See also <https://docs.github.com/es/rest/commits/commits?apiVersion=2022-11-28#list-commits>
     - See <https://docs.github.com/en/rest/guides/using-pagination-in-the-rest-api?apiVersion=2022-11-28> for more details about GitHub pagination.
