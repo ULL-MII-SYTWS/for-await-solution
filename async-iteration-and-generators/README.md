@@ -22,6 +22,7 @@ Examples from the chapter [Async iteration and generators](https://javascript.in
 
     - We can use that link for the next request, to get more commits, and so on.
     - See [Using link headers](https://docs.github.com/en/rest/guides/using-pagination-in-the-rest-api?apiVersion=2022-11-28#using-link-headers) in the GitHub docs.
+    - See also <https://docs.github.com/es/rest/commits/commits?apiVersion=2022-11-28#list-commits>
 
     In file [fetch-commits.js](fetch-commits.js) you'll find the function `fetchCommits(repo)` that gets commits for us, making requests whenever needed. The function cares about all pagination stuff. 
 

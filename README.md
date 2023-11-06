@@ -1,13 +1,19 @@
+# Solution to the lab Async Generators and for await
+
+## Chapter Async iteration and generators
+
+Exercises from the Chapter [Async iteration and generators](https://javascript.info/async-iterators-generators) of the <https://javascript.info> book.
+
+See [async-iteration-and-generators/README.md](async-iteration-and-generators/README.md) for more details.
+
+## First Promise to Come is First to be Served
 [![NPM](https://nodei.co/npm/frstcmfrstsvd.png?mini=true)](https://npmjs.org/package/frstcmfrstsvd)
-
-
-# First Promise to Come is First to be Served
 
 Receives an array of promises (not an iterator) and returns an async generator that yields objects like  `{ value: promiseResult, index: promiseIndex, status: 'fulfilled' }` in the order they are fulfilled. 
 
 In case of rejection, the generator yields objects with this shape: `{ reason: errorMessage, index: promiseIndex, status: 'rejected' }`
 
-## Usage
+### Usage
 
 ```js
 import frstcmfrstsvd from 'frstcmfrstsvd';
@@ -17,7 +23,7 @@ for await (let result of frstcmfrstsvd(arrayOfPromises)) {
 }
 ```
 
-## Installation
+### Installation
 
 ```
 npm i frstcmfrstsvd
@@ -29,14 +35,14 @@ or
 yarn add frstcmfrstsvd
 ```
 
-## Disclaimer 
+### Disclaimer 
 
 This is more an academic module to be posed as exercise for my students than a 
 finished module
 
-## Introduction
+### Introduction
 
-### Motivation
+#### Motivation
 
 If you use for-await-of on an array of promises, you iterate over it in the specified order, doesn't matter if the next promise in the given array is resolved before the previous one:
 
@@ -71,7 +77,7 @@ c
 z
 ```
 
-### Goal
+#### Goal
 
 But sometimes you want to process the results as soon as the promises yield them. To achieve it, import the current module and use it as in this example:
 
@@ -118,7 +124,7 @@ item =  { value: 'a', index: 0, status: 'fulfilled' }
 item =  { value: 'c', index: 4, status: 'fulfilled' }
 ```
 
-## Error Management Example
+### Error Management Example
 
 Here is an example of use with rejection:
 
