@@ -20,7 +20,7 @@ Examples from the chapter [Async iteration and generators](https://javascript.in
       Link: <https://api.github.com/repositories/2325298/commits?page=2>; rel="next", <https://api.github.com/repositories/2325298/commits?page=40575>; rel="last"
       ```
 
-      - See the script [async-iteration-and-generators/get-commits.sh](/async-iteration-and-generators/get-commits.sh)
+      - See the script [async-iteration-and-generators/get-commits.sh](/async-iteration-and-generators/get-commits.sh) and [async-iteration-and-generators/get-commits-with-curl.sh](/async-iteration-and-generators/get-commits-with-curl.sh)
     - We can use that link for the next request, to get more commits, and so on.
     - See [Using link headers](https://docs.github.com/en/rest/guides/using-pagination-in-the-rest-api?apiVersion=2022-11-28#using-link-headers) in the GitHub docs.
     - See also <https://docs.github.com/es/rest/commits/commits?apiVersion=2022-11-28#list-commits>
