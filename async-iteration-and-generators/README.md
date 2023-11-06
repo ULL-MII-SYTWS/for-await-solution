@@ -32,7 +32,7 @@ GitHub allows us to retrieve commits using pagination:
   Link: <https://api.github.com/repositories/2325298/commits?page=2>; rel="next", <https://api.github.com/repositories/2325298/commits?page=40575>; rel="last"
   ```
 
-  - See the script [async-iteration-and-generators/get-commits.sh](/async-iteration-and-generators/get-commits.sh) and [async-iteration-and-generators/get-commits-with-curl.sh](/async-iteration-and-generators/get-commits-with-curl.sh)
+  - See the script [async-iteration-and-generators/get-commits.sh](/async-iteration-and-generators/get-commits.sh) and [async-iteration-and-generators/get-commits-with-curl.sh](/async-iteration-and-generators/get-commits-with-curl.sh) and [async-iteration-and-generators/get-commits.js](/async-iteration-and-generators/get-commits.js) for more details.
 - We can use that link for the next request, to get more commits, and so on.
 - The `response.headers` object belongs to the [Headers](https://developer.mozilla.org/en-US/docs/Web/API/Headers) class and has several methods. Among them the [get](https://developer.mozilla.org/en-US/docs/Web/API/Headers/get) method
     
