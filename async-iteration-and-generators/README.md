@@ -23,6 +23,10 @@ Examples from the chapter [Async iteration and generators](https://javascript.in
       - See the script [async-iteration-and-generators/get-commits.sh](/async-iteration-and-generators/get-commits.sh) and [async-iteration-and-generators/get-commits-with-curl.sh](/async-iteration-and-generators/get-commits-with-curl.sh)
     - We can use that link for the next request, to get more commits, and so on.
     - The `response.headers` object belongs to the [Headers](https://developer.mozilla.org/en-US/docs/Web/API/Headers) class and has several methods. Among them the [get](https://developer.mozilla.org/en-US/docs/Web/API/Headers/get) method
+       
+       ```js
+       let nextPage = response.headers.get('Link')?.match(/<(.*?)>; rel="next"/);
+       ```
     - The body  is an array of objects that looks like:
       ```json
       [
