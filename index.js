@@ -1,7 +1,8 @@
 async function* frstcmfrstsvd(promises) {
   let resolver = []
 
-  // create an array sortedByFulfillment of pending promises and make available their resolvers in the resolver array
+  // create an array sortedByFulfillment of pending promises and 
+  // make available their resolvers in the resolver array
   let sortedByFulfillment = []
   for (let i = 0; i < promises.length; i++) {
     sortedByFulfillment.push(new Promise((res, rej) => {
