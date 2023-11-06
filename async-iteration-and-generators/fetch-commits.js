@@ -13,7 +13,9 @@ async function* fetchCommits(repo) {
 
         // (3) the URL of the next page is in the headers, extract it
         // It has a special format Link: <https://api.github.com/repositories/93253246/commits?page=2>; rel="next".
-        let nextPage = response.headers.get('Link')?.match(/<(.*?)>; rel="next"/);
+        let header = response.headers.get('Link');
+       
+        let nextPage = header?.match(/<(.*?)>; rel="next"/);
         nextPage = nextPage?.[1];
         // See https://docs.github.com/es/rest/commits/commits?apiVersion=2022-11-28#list-commits
         // and https://docs.github.com/en/rest/guides/using-pagination-in-the-rest-api?apiVersion=2022-11-28
