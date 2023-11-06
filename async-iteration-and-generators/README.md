@@ -22,7 +22,7 @@ Examples from the chapter [Async iteration and generators](https://javascript.in
 
       - See the script [async-iteration-and-generators/get-commits.sh](/async-iteration-and-generators/get-commits.sh) and [async-iteration-and-generators/get-commits-with-curl.sh](/async-iteration-and-generators/get-commits-with-curl.sh)
     - We can use that link for the next request, to get more commits, and so on.
-    - The body  is an array that looks like:
+    - The body  is an array of objects that looks like:
       ```json
       [
         {
