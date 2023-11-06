@@ -21,7 +21,7 @@ async function* frstcmfrstsvd(promises) {
     })
   })
 
-  for await (let result of sortedByFulfillment) {
+  for (let result of sortedByFulfillment) {
     yield result
   }
 }
