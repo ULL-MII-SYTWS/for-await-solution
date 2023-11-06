@@ -7,9 +7,9 @@ let range = {
         for (let value = this.from; value <= this.to; value++) {
 
             // make a pause between values, wait for something
-            await new Promise(resolve => setTimeout(resolve, 1000));
+            let r = await new Promise(resolve => setTimeout(() => resolve(value*value), 1000));
 
-            yield value;
+            yield r;
         }
     },
 
@@ -25,7 +25,8 @@ let range = {
 
             next() {
                 if (this.current <= this.last) {
-                    return { done: false, value: this.current++ };
+                    let r = this.current*this.current++;
+                    return { done: false, value: r };
                 } else {
                     return { done: true };
                 }
