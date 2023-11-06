@@ -6,7 +6,7 @@ Exercises from the Chapter [Async iteration and generators](https://javascript.i
 
 See [async-iteration-and-generators/README.md](async-iteration-and-generators/README.md) for more details.
 
-## First Promise to Come is First to be Served
+## npm module: First Promise to Come is First to be Served
 [![NPM](https://nodei.co/npm/frstcmfrstsvd.png?mini=true)](https://npmjs.org/package/frstcmfrstsvd)
 
 Receives an array of promises (not an iterator) and returns an async generator that yields objects like  `{ value: promiseResult, index: promiseIndex, status: 'fulfilled' }` in the order they are fulfilled. 
