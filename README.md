@@ -1,5 +1,15 @@
 # Solution to the lab Async Generators and for await
 
+## Branches
+
+- asyncgenerator: frstcmfrstsvd is an async generator that receives an array of promises and returns an async generator that yields the results of the promises in the order they are fulfilled.
+- await: frstcmfrstsvd is an async generator that receives an array of promises and returns an array of promises in the order they are fulfilled. Uses `await`
+- develop: branch for development
+- main: branch for production
+- then: frstcmfrstsvd is an async generator that receives an array of promises and returns an array of promises in the order they are fulfilled. Uses `then`
+
+## Branches
+
 ## Chapter Async iteration and generators
 
 Exercises from the Chapter [Async iteration and generators](https://javascript.info/async-iterators-generators) of the <https://javascript.info> book.
