@@ -1,4 +1,4 @@
-async function* frstcmfrstsvd(promises) {
+function frstcmfrstsvd(promises) {
   let resolver = []
 
   // create an array sortedByFulfillment of pending promises and 
@@ -10,20 +10,20 @@ async function* frstcmfrstsvd(promises) {
     }))
   }
 
-  promises.forEach((p, i) => {
-    Promise.resolve(p).then(r => { 
-      // resolve the first pending promise on the sortedByFulfillment array 
+  promises.forEach(async (p, i) => {
+    try {
+      let r = await p;
       let res = resolver.shift()
-      res({ value: r, index: i, status: 'fulfilled' })
-    }).catch(err => {
+      res({ value: r, index: i, status: 'fulfilled' })  
+    }
+    catch(err) {
       let res = resolver.shift()
       res({ reason: err, index: i, status: 'rejected' })
-    })
+    }
   })
 
-  for (let result of sortedByFulfillment) {
-    yield result
-  }
+  return sortedByFulfillment
+
 }
 
 export default frstcmfrstsvd
