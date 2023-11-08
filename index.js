@@ -1,4 +1,4 @@
-async function* frstcmfrstsvd(promises) {
+function frstcmfrstsvd(promises) {
   let resolver = []
 
   // create an array sortedByFulfillment of pending promises and 
@@ -21,9 +21,8 @@ async function* frstcmfrstsvd(promises) {
     })
   })
 
-  for (let result of sortedByFulfillment) {
-    yield result
-  }
+  return sortedByFulfillment
+
 }
 
 export default frstcmfrstsvd
