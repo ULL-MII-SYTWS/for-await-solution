@@ -20,8 +20,9 @@ const arr = [
 
 console.log(frstcmfrstsvd);
 
+let values = frstcmfrstsvd(arr)
 (async () => {
-    for await (let item of frstcmfrstsvd(arr)) {
+    for await (let item of values) {
         console.log("item = ",item);
     }
 })()
