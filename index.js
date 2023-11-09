@@ -6,11 +6,14 @@ async function* frstcmfrstsvd(iterable) {
     const item = Promise.resolve(iterable[i]);
       const promise = item
         .then((result) => {
-          return values.push({value: result, index: i, status: "fulfilled"});
+          let r = {value: result, index: i, status: "fulfilled"};
+          values.push(r);
+          return r;
         })
         .catch((error) => {
-          //console.error("Promise rejection:", error);
-          return values.push({reason: error, index: i, status: 'rejected'}); // Agregar un valor marcado para identificar el error
+          let reason = {reason: error, index: i, status: "rejected"};
+          values.push(reason); // Agregar un valor marcado para identificar el error
+          return reason;
         });
       promises.push(promise);
   }
