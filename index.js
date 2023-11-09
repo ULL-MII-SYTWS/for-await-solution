@@ -1,30 +1,25 @@
-function frstcmfrstsvd(promises) {
-  let resolver = []
+async function* frstcmfrstsvd(iterable) {
+  const promises = [];
+  const values = [];
 
-  // create an array sortedByFulfillment of pending promises and 
-  // make available their resolvers in the resolver array
-  let sortedByFulfillment = []
-  for (let i = 0; i < promises.length; i++) {
-    sortedByFulfillment.push(new Promise((res, _) => {
-      resolver.push(res)
-    }))
+  for (let i = 0; i < iterable.length; i++) {
+    const item = Promise.resolve(iterable[i]);
+      const promise = item
+        .then((result) => {
+          return values.push({value: result, index: i, status: "fulfilled"});
+        })
+        .catch((error) => {
+          //console.error("Promise rejection:", error);
+          return values.push({reason: error, index: i, status: 'rejected'}); // Agregar un valor marcado para identificar el error
+        });
+      promises.push(promise);
   }
 
-  promises.forEach(async (p, i) => {
-    try {
-      let r = await p;
-      let res = resolver.shift()
-      res({ value: r, index: i, status: 'fulfilled' })  
-    }
-    catch(err) {
-      let res = resolver.shift()
-      res({ reason: err, index: i, status: 'rejected' })
-    }
-  })
-
-  return sortedByFulfillment
+  for (const promise of promises) {
+    await promise;
+    yield values.shift();
+  }
 
 }
 
-export default frstcmfrstsvd
-
+export default frstcmfrstsvd;
